@@ -1,10 +1,7 @@
 "use server";
 
+import { PW_MIN_LENGTH, PW_REGEX, PW_REGEX_ERROR } from "@/lib/constants";
 import { z } from "zod";
-
-const passwordRegex = new RegExp(
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!@$%^&*-]).+$/
-);
 
 const checkPasswords = ({
   password,
@@ -24,17 +21,11 @@ const formSchema = z
       .min(2, "2글자 이상의 성함을 입력해주세요.")
       .max(20, "20글자 이하의 성함을 입력해주세요."),
     email: z
-      .string()
+      .string({ required_error: "이메일을 입력해주세요." })
       .trim()
       .email({ message: "올바른 형식의 이메일을 입력해주세요." })
       .toLowerCase(),
-    password: z
-      .string()
-      .min(10, "10글자 이상의 비밀번호를 입력해주세요.")
-      .regex(
-        passwordRegex,
-        "비밀번호는 영문 소문자, 대문자, 숫자, 특수문자를 포함해야 합니다."
-      ),
+    password: z.string().min(PW_MIN_LENGTH, PW_REGEX_ERROR).regex(PW_REGEX),
     confirmPassword: z.string(),
   })
   .refine(checkPasswords, {
