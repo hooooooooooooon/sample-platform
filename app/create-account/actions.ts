@@ -2,6 +2,7 @@
 
 import { PW_MIN_LENGTH, PW_REGEX, PW_REGEX_ERROR } from "@/lib/constants";
 import db from "@/lib/db";
+import bcrypt from "bcrypt";
 import { z } from "zod";
 
 const checkPasswords = ({
@@ -38,7 +39,13 @@ const formSchema = z
       .email({ message: "올바른 형식의 이메일을 입력해주세요." })
       .toLowerCase()
       .refine(checkUnigueEmail, "이미 생성된 이메일 계정입니다."),
-    password: z.string().min(PW_MIN_LENGTH, PW_REGEX_ERROR).regex(PW_REGEX),
+    password: z
+      .string()
+      .min(PW_MIN_LENGTH, PW_REGEX_ERROR)
+      .regex(
+        PW_REGEX,
+        "영문 대문자, 소문자, 특수문자를 모두 하나 이상 포함시켜야 합니다."
+      ),
     confirmPassword: z.string(),
   })
   .refine(checkPasswords, {
@@ -59,5 +66,16 @@ export async function createAccount(prevState: any, formData: FormData) {
   if (!result.success) {
     return result.error.flatten();
   } else {
+    const hashedPassword = await bcrypt.hash(result.data.password, 12);
+    const user = await db.user.create({
+      data: {
+        username: result.data.username,
+        email: result.data.email,
+        password: hashedPassword,
+      },
+      select: {
+        id: true,
+      },
+    });
   }
 }
