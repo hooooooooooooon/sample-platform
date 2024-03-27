@@ -3,7 +3,7 @@ import FormButton from "@/components/form-btn";
 import SocialLogin from "@/components/social-login";
 
 export default function LogIn() {
-  async function handleForm() {
+  async function handleForm(formData: FormData) {
     "use server";
   }
   return (
@@ -27,7 +27,7 @@ export default function LogIn() {
           required
           errors={[]}
         />
-        <FormButton loading={false} text="로그인하기" />
+        <FormButton text="로그인하기" />
       </form>
       <SocialLogin />
     </div>
