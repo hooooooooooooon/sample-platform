@@ -25,6 +25,7 @@ const formSchema = z
       .max(20, "20글자 이하의 성함을 입력해주세요."),
     email: z
       .string()
+      .trim()
       .email({ message: "올바른 형식의 이메일을 입력해주세요." })
       .toLowerCase(),
     password: z
