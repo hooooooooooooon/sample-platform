@@ -1,6 +1,7 @@
 "use server";
 
 import { PW_MIN_LENGTH, PW_REGEX, PW_REGEX_ERROR } from "@/lib/constants";
+import db from "@/lib/db";
 import { z } from "zod";
 
 const checkPasswords = ({
@@ -10,6 +11,17 @@ const checkPasswords = ({
   password: string;
   confirmPassword: string;
 }) => password === confirmPassword;
+
+const checkUnigueEmail = async (email: string) => {
+  const user = await db.user.findUnique({
+    where: {
+      email,
+    },
+    select: { id: true },
+  });
+  return !Boolean(user);
+};
+
 const formSchema = z
   .object({
     username: z
@@ -24,7 +36,8 @@ const formSchema = z
       .string({ required_error: "이메일을 입력해주세요." })
       .trim()
       .email({ message: "올바른 형식의 이메일을 입력해주세요." })
-      .toLowerCase(),
+      .toLowerCase()
+      .refine(checkUnigueEmail, "이미 생성된 이메일 계정입니다."),
     password: z.string().min(PW_MIN_LENGTH, PW_REGEX_ERROR).regex(PW_REGEX),
     confirmPassword: z.string(),
   })
@@ -42,10 +55,9 @@ export async function createAccount(prevState: any, formData: FormData) {
     password: formData.get("password"),
     confirmPassword: formData.get("confirmPassword"),
   };
-  const result = formSchema.safeParse(data);
+  const result = await formSchema.safeParseAsync(data);
   if (!result.success) {
     return result.error.flatten();
   } else {
-    result.data;
   }
 }
