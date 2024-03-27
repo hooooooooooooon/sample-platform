@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import FormInput from "@/components/form-input";
 import FormButton from "@/components/form-btn";
@@ -20,28 +20,28 @@ export default function CreateAccount() {
           type="text"
           placeholder="성함"
           required
-          errors={[]}
+          errors={state?.fieldErrors.username}
         />
         <FormInput
           name="email"
           type="email"
           placeholder="이메일"
           required
-          errors={[]}
+          errors={state?.fieldErrors.email}
         />
         <FormInput
           name="password"
           type="password"
           placeholder="비밀번호"
           required
-          errors={[]}
+          errors={state?.fieldErrors.password}
         />
         <FormInput
           name="confirmPassword"
           type="password"
           placeholder="비밀번호 재입력"
           required
-          errors={[]}
+          errors={state?.fieldErrors.confirmPassword}
         />
         <FormButton text="회원가입하기" />
       </form>
