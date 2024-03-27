@@ -39,8 +39,8 @@ const formSchema = z
       .string({ required_error: "이메일을 입력해주세요." })
       .trim()
       .email({ message: "올바른 형식의 이메일을 입력해주세요." })
-      .toLowerCase()
-      .refine(checkUnigueEmail, "이미 생성된 이메일 계정입니다."),
+      .toLowerCase(),
+
     password: z
       .string()
       .min(PW_MIN_LENGTH, PW_REGEX_ERROR)
@@ -50,11 +50,29 @@ const formSchema = z
       ),
     confirmPassword: z.string(),
   })
+  .superRefine(async ({ email }, ctx) => {
+    const user = await db.user.findUnique({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+      },
+    });
+    if (user) {
+      ctx.addIssue({
+        code: "custom",
+        message: "이미 생성된 이메일 계정입니다.",
+        path: ["email"],
+        fatal: true,
+      });
+      return z.NEVER;
+    }
+  })
   .refine(checkPasswords, {
     message: "비밀번호가 일치하지 않습니다.",
     path: ["confirmPassword"],
   });
-
 const usernameSchema = z.string().min(5).max(10);
 
 export async function createAccount(prevState: any, formData: FormData) {
