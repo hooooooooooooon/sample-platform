@@ -4,6 +4,7 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import { PhotoIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
+import { useFormState } from "react-dom";
 import { uploadProduct } from "./actions";
 
 export default function AddProduct() {
@@ -19,9 +20,10 @@ export default function AddProduct() {
     const url = URL.createObjectURL(file);
     setPreview(url);
   };
+  const [state, action] = useFormState(uploadProduct, null);
   return (
     <div>
-      <form action={uploadProduct} className="p-5 flex flex-col gap-5">
+      <form action={action} className="p-5 flex flex-col gap-5">
         <label
           htmlFor="photo"
           className="border-2 aspect-square flex flex-col items-center justify-center text-neutral-200 border-neutral-200 rounded-md border-dashed cursor-pointer bg-center bg-cover"
@@ -43,9 +45,27 @@ export default function AddProduct() {
           name="photo"
           className="hidden"
         />
-        <Input name="title" required placeholder="제목" type="text" />
-        <Input name="price" required placeholder="가격" type="number" />
-        <Input name="description" required placeholder="설명" type="text" />
+        <Input
+          name="title"
+          required
+          placeholder="제목"
+          type="text"
+          errors={state?.fieldErrors.title}
+        />
+        <Input
+          name="price"
+          required
+          placeholder="가격"
+          type="number"
+          errors={state?.fieldErrors.price}
+        />
+        <Input
+          name="description"
+          required
+          placeholder="설명"
+          type="text"
+          errors={state?.fieldErrors.description}
+        />
         <Button text="작성 완료" />
       </form>
     </div>
