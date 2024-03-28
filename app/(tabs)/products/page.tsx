@@ -31,8 +31,9 @@ export default async function Product() {
     <div>
       <Link href="/products/add" className="flex gap-5">
         <div className="pt-5 px-5 flex flex-col w-full">
-          <div className="border-neutral-600 text-neutral-600 border-2 border-dashed rounded-md flex justify-center items-center w-full hover:border-neutral-500 hover:text-neutral-500">
-            <PlusIcon className="h-28" />
+          <div className="pb-5 flex flex-col border-neutral-600 text-neutral-600 border-2 border-dashed rounded-md justify-center items-center w-full hover:border-neutral-500 hover:text-neutral-500">
+            <PlusIcon className="h-16" />
+            <div className="text-sm">신규 프로젝트를 추가해주세요.</div>
           </div>
         </div>
       </Link>
