@@ -10,6 +10,7 @@ import { getUploadUrl, uploadProduct } from "./actions";
 export default function AddProduct() {
   const [preview, setPreview] = useState("");
   const [uploadUrl, setUploadUrl] = useState("");
+  const [imageId, setImageId] = useState("");
   const onImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { files },
@@ -20,13 +21,32 @@ export default function AddProduct() {
     const file = files[0];
     const url = URL.createObjectURL(file);
     setPreview(url);
-    const [success, result] = await getUploadUrl();
+    const { success, result } = await getUploadUrl();
     if (success) {
       const { id, uploadURL } = result;
       setUploadUrl(uploadURL);
+      setImageId(id);
     }
   };
-  const [state, action] = useFormState(uploadProduct, null);
+  const interceptAction = async (_: any, formData: FormData) => {
+    const cloudflareForm = new FormData();
+    const file = formData.get("photo");
+    if (!file) {
+      return;
+    }
+    cloudflareForm.append("file", file);
+    const response = await fetch(uploadUrl, {
+      method: "POST",
+      body: cloudflareForm,
+    });
+    if (response.status !== 200) {
+      return;
+    }
+    const photoUrl = `https://imagedelivery.net/cdvszbGqzHKygwWrlNkKRw/${imageId}`;
+    formData.set("photo", photoUrl);
+    return uploadProduct(_, formData);
+  };
+  const [state, action] = useFormState(interceptAction, null);
   return (
     <div>
       <form action={action} className="p-5 flex flex-col gap-5">
@@ -40,6 +60,7 @@ export default function AddProduct() {
               <PhotoIcon className="w-20" />
               <div className="text-neutral-500 text-sm">
                 사진을 추가해주세요.
+                {state?.fieldErrors.photo}
               </div>
             </>
           ) : null}
@@ -49,6 +70,7 @@ export default function AddProduct() {
           type="file"
           id="photo"
           name="photo"
+          accept="image/*"
           className="hidden"
         />
         <Input
