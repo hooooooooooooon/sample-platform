@@ -22,8 +22,8 @@ export default function AddProduct() {
     setPreview(url);
     const [success, result] = await getUploadUrl();
     if (success) {
-      const { id, uploadUrl } = result;
-      setUploadUrl(uploadUrl);
+      const { id, uploadURL } = result;
+      setUploadUrl(uploadURL);
     }
   };
   const [state, action] = useFormState(uploadProduct, null);
