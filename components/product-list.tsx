@@ -27,8 +27,8 @@ export default function ProductList({ initialProducts }: ProductListProps) {
           setIsLoading(true);
           const newProducts = await getMoreProducts(page + 1);
           if (newProducts.length !== 0) {
-            setPage((prev) => prev + 1);
             setProducts((prev) => [...prev, ...newProducts]);
+            setPage((prev) => prev + 1);
           } else {
             setIsLastPage(true);
           }
@@ -56,8 +56,7 @@ export default function ProductList({ initialProducts }: ProductListProps) {
       {!isLastPage ? (
         <span
           ref={trigger}
-          style={{ marginTop: `${page + 1 * 100}vh` }}
-          className="mb-96 text-sm font-semibold bg-blue-700 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
+          className="text-sm font-semibold bg-blue-700 w-fit mx-auto px-3 py-2 rounded-md hover:opacity-90 active:scale-95"
         >
           {isLoading ? "로딩 중" : "더보기"}
         </span>
