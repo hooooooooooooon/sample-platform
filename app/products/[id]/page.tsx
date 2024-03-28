@@ -47,8 +47,8 @@ export default async function ProductDetail({
       <div className="relative aspect-square">
         <Image fill src={product.photo} alt={product.title} />
       </div>
-      <div className="p-5 flex items-center gap03 border-b border-neutral-600">
-        <div className="size-10 rounded-full">
+      <div className="p-5 flex items-center gap-3 border-b border-neutral-600">
+        <div className="size-10 overflow-hidden rounded-full">
           {product.user.avatar !== null ? (
             <Image
               src={product.user.avatar}
@@ -68,12 +68,12 @@ export default async function ProductDetail({
         <h1 className="text-2xl font-semibold">{product.title}</h1>
         <p>{product.description}</p>
       </div>
-      <div className="fixed w-full bottom-0 left-0 p-5 pb-10 bg-neutral-700 flex justify-between items-center">
+      <div className="fixed w-full bottom-0 left-0 p-5 pb-10 bg-neutral-800 flex justify-between items-center">
         <span className="font-semibold text-lg">
           {formatToWon(product.price)}원
         </span>
         {isOwner ? (
-          <button className="bg-neutral-600 px-5 py-2.5 rounded-md text-neutral-200 font-semibold">
+          <button className="bg-neutral-700 px-5 py-2.5 rounded-md text-neutral-200 font-semibold">
             삭제하기
           </button>
         ) : (
