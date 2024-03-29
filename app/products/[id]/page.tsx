@@ -25,9 +25,9 @@ async function getProduct(id: number) {
         select: {
           username: true,
           avatar: true,
-        }
-      }
-    }
+        },
+      },
+    },
   });
   return product;
 }
@@ -53,6 +53,15 @@ const getCachedProductTitle = nextCache(getProductTitle, ["product-title"], {
   tags: ["product-title"],
 });
 
+async function getParcel() {
+  fetch("https://api.com", {
+    next: {
+      revalidate: 60,
+      tags: ["parcel"],
+    },
+  });
+}
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const product = await getCachedProductTitle(Number(params.id));
   return {
@@ -76,9 +85,9 @@ export default async function ProductDetail({
 
   const isOwner = await getIsOwner(product.userId);
   const revalidate = async () => {
-    "use server"
-    revalidateTag("product-title")
-  }
+    "use server";
+    revalidateTag("product-title");
+  };
   return (
     <div>
       <div className="relative aspect-square">
