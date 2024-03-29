@@ -5,7 +5,9 @@ import { Prisma } from "@prisma/client";
 import { unstable_cache as nextCache } from "next/cache";
 import Link from "next/link";
 
-const getCachedProducts = nextCache(getInitialProducts, ["home-products"]);
+const getCachedProducts = nextCache(getInitialProducts, ["home-products"], {
+  revalidate: 60
+});
 
 async function getInitialProducts() {
   const products = await db.product.findMany({
@@ -26,6 +28,10 @@ async function getInitialProducts() {
 export type InitialProducts = Prisma.PromiseReturnType<
   typeof getInitialProducts
 >;
+
+export const metadata = {
+  title: "Home",
+};
 
 export default async function Product() {
   const initialProducts = await getCachedProducts();
