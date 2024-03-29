@@ -2,11 +2,11 @@ import ProductList from "@/components/product-list";
 import db from "@/lib/db";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { Prisma } from "@prisma/client";
-import { unstable_cache as nextCache } from "next/cache";
+import { revalidatePath, unstable_cache as nextCache } from "next/cache";
 import Link from "next/link";
 
 const getCachedProducts = nextCache(getInitialProducts, ["home-products"], {
-  revalidate: 60
+  revalidate: 60,
 });
 
 async function getInitialProducts() {
@@ -35,6 +35,10 @@ export const metadata = {
 
 export default async function Product() {
   const initialProducts = await getCachedProducts();
+  const revalidate = async () => {
+    "use server";
+    revalidatePath("/home");
+  };
   return (
     <div>
       <Link href="/products/add" className="flex gap-5">
@@ -46,6 +50,9 @@ export default async function Product() {
         </div>
       </Link>
       <ProductList initialProducts={initialProducts} />
+      <form action={revalidate}>
+        <button>Revalidate</button>
+      </form>
     </div>
   );
 }
