@@ -61,6 +61,7 @@ export async function logIn(prevState: any, formData: FormData) {
     } else {
       return {
         fieldErrors: {
+          email: ["이메일이 존재하지 않습니다."],
           password: ["잘못된 비밀번호를 입력하셨습니다."],
         },
       };
