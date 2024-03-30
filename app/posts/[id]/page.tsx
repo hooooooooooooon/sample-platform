@@ -1,8 +1,11 @@
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { formatToTimeAgo } from "@/lib/utils";
-import { HandThumbUpIcon as LikeIcon } from "@heroicons/react/24/outline";
-import { EyeIcon, HandThumbUpIcon as DislikeIcon } from "@heroicons/react/24/solid";
+import {
+  EyeIcon,
+  HandThumbUpIcon as LikeIcon,
+} from "@heroicons/react/24/outline";
+import { HandThumbUpIcon as DislikeIcon } from "@heroicons/react/24/solid";
 import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -122,7 +125,11 @@ export default async function PostDetail({
           <button
             className={`flex items-center gap-2 text-neutral-400 text-sm border border-neutral-400 rounded-full p-2`}
           >
-            {isLiked ? <DislikeIcon className="size-5" /> : <LikeIcon className="size-5" />}
+            {isLiked ? (
+              <DislikeIcon className="size-5" />
+            ) : (
+              <LikeIcon className="size-5" />
+            )}
             <span>좋아요 ({post._count.likes})</span>
           </button>
         </form>

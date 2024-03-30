@@ -19,10 +19,10 @@ export async function middleware(request: NextRequest) {
   if (!session.id) {
     if (!exists) {
       return NextResponse.redirect(new URL("/", request.url));
-    } else {
-      if (exists) {
-        return NextResponse.redirect(new URL("/home", request.url));
-      }
+    }
+  } else {
+    if (exists) {
+      return NextResponse.redirect(new URL("/home", request.url));
     }
   }
 }
