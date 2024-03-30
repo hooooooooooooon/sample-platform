@@ -33,6 +33,9 @@ export const metadata = {
   title: "Home",
 };
 
+export const dynamic = "force-dynamic";
+// export const revalidate = 60;
+
 export default async function Product() {
   const initialProducts = await getInitialProducts();
   const revalidate = async () => {
