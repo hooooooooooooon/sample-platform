@@ -1,16 +1,9 @@
+import LikeButton from "@/components/like-button";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { formatToTimeAgo } from "@/lib/utils";
-import {
-  EyeIcon,
-  HandThumbUpIcon as LikeIcon,
-} from "@heroicons/react/24/outline";
-import { HandThumbUpIcon as DislikeIcon } from "@heroicons/react/24/solid";
-import {
-  revalidatePath,
-  revalidateTag,
-  unstable_cache as nextCache,
-} from "next/cache";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import { unstable_cache as nextCache } from "next/cache";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -91,34 +84,7 @@ export default async function PostDetail({
   if (!post) {
     return notFound();
   }
-  const likePost = async () => {
-    "use server";
-    const session = await getSession();
-    try {
-      await db.like.create({
-        data: {
-          postId: id,
-          userId: session.id!,
-        },
-      });
-      revalidateTag(`like-status-${id}`);
-    } catch (e) { }
-  };
-  const dislikePost = async () => {
-    "use server";
-    const session = await getSession();
-    try {
-      await db.like.delete({
-        where: {
-          id: {
-            postId: id,
-            userId: session.id!,
-          },
-        },
-      });
-      revalidateTag(`like-status-${id}`);
-    } catch (e) { }
-  };
+
   const { likeCount, isLiked } = await getCachedLikeStatus(id);
   return (
     <div className="p-5 text-neutral-200">
@@ -144,25 +110,7 @@ export default async function PostDetail({
           <EyeIcon className="size-5" />
           <span>조회수 {post.views}</span>
         </div>
-        <form action={isLiked ? dislikePost : likePost}>
-          <button
-            className={`flex items-center gap-2 text-neutral-400 text-sm border border-neutral-400 rounded-full p-2 transition-colors ${isLiked
-                ? "bg-blue-600 text-neutral-200 border-blue-600"
-                : "hover:bg-neutral-800"
-              }`}
-          >
-            {isLiked ? (
-              <DislikeIcon className="size-5" />
-            ) : (
-              <LikeIcon className="size-5" />
-            )}
-            {isLiked ? (
-              <span>{likeCount}</span>
-            ) : (
-              <span>좋아요 ({likeCount})</span>
-            )}
-          </button>
-        </form>
+        <LikeButton isLiked={isLiked} likeCount={likeCount} postId={id} />
       </div>
     </div>
   );
