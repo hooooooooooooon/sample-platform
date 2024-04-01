@@ -52,6 +52,11 @@ export async function logIn(prevState: any, formData: FormData) {
     });
 
     const ok = await bcrypt.compare(result.data.password, user!.password ?? "");
+    console.log(result.data.password);
+    console.log(user!.password);
+    console.log(ok);
+    const hashedPassword = await bcrypt.hash(result.data.password, 12);
+    console.log(hashedPassword);
     if (ok) {
       const session = await getSession();
       session.id = user!.id;
@@ -61,7 +66,6 @@ export async function logIn(prevState: any, formData: FormData) {
     } else {
       return {
         fieldErrors: {
-          email: ["이메일이 존재하지 않습니다."],
           password: ["잘못된 비밀번호를 입력하셨습니다."],
         },
       };

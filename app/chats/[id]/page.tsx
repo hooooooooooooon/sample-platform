@@ -54,6 +54,15 @@ export default async function ChatRoom({ params }: { params: { id: string } }) {
     return notFound();
   }
   const initialMessages = await getMessages(params.id);
-  const session = await getSession()
-  return <ChatMessagesList userId={session.id} initialMessages={initialMessages} />;
+  const session = await getSession();
+  if (!session.id) {
+    return notFound();
+  }
+  return (
+    <ChatMessagesList
+      chatRoomId={params.id}
+      userId={session.id}
+      initialMessages={initialMessages}
+    />
+  );
 }
