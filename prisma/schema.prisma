@@ -101,7 +101,7 @@ model Message {
   payload    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  romm       ChatRoom @relation(fields: [chatRoomId], references: [id])
+  room       ChatRoom @relation(fields: [chatRoomId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
   chatRoomId String
   userId     Int

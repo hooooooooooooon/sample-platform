@@ -1,4 +1,5 @@
 import db from "@/lib/db";
+import getSession from "@/lib/session";
 // import getSession from "@/lib/session";
 import { formatToWon } from "@/lib/utils";
 import { UserIcon } from "@heroicons/react/24/solid";
@@ -9,7 +10,7 @@ import {
 } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 async function getIsOwner(userId: number) {
   // const session = await getSession();
@@ -92,6 +93,21 @@ export default async function ProductDetail({
     "use server";
     revalidateTag("product-title");
   };
+  const createChatRoom = async () => {
+    "use server";
+    const session = await getSession();
+    const room = await db.chatRoom.create({
+      data: {
+        users: {
+          connect: [{ id: product.userId }, { id: session.id }],
+        },
+      },
+      select: {
+        id: true,
+      },
+    });
+    redirect(`/chats/${room.id}`)
+  };
   return (
     <div>
       <div className="relative aspect-square">
@@ -132,12 +148,11 @@ export default async function ProductDetail({
             삭제하기
           </button>
         ) : (
-          <Link
-            className="bg-blue-700 px-5 py-2.5 rounded-md text-neutral-200 font-semibold"
-            href={``}
-          >
-            채팅하기
-          </Link>
+          <form action={createChatRoom}>
+            <button className="bg-blue-700 px-5 py-2.5 rounded-md text-neutral-200 font-semibold">
+              채팅하기
+            </button>
+          </form>
         )}
       </div>
     </div>
