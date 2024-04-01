@@ -1,6 +1,5 @@
 "use server";
 
-import { PW_MIN_LENGTH, PW_REGEX, PW_REGEX_ERROR } from "@/lib/constants";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import bcrypt from "bcrypt";
@@ -62,11 +61,12 @@ export async function logIn(prevState: any, formData: FormData) {
       session.id = user!.id;
       await session.save();
 
-      redirect("/profile");
+      redirect("/home");
     } else {
       return {
         fieldErrors: {
           password: ["잘못된 비밀번호를 입력하셨습니다."],
+          email: [],
         },
       };
     }
