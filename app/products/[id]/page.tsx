@@ -1,15 +1,13 @@
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-// import getSession from "@/lib/session";
 import { formatToWon } from "@/lib/utils";
 import { UserIcon } from "@heroicons/react/24/solid";
 import {
-  revalidatePath,
   revalidateTag,
   unstable_cache as nextCache,
 } from "next/cache";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 async function getIsOwner(userId: number) {
@@ -74,6 +72,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
+const Map = dynamic(() => import("@/components/map"), { ssr: false });
+
 export default async function ProductDetail({
   params,
 }: {
@@ -106,17 +106,13 @@ export default async function ProductDetail({
         id: true,
       },
     });
-    redirect(`/chats/${room.id}`)
+    redirect(`/chats/${room.id}`);
   };
+
   return (
     <div>
       <div className="relative aspect-square">
-        <Image
-          fill
-          className="object-cover"
-          src={`${product.photo}/public`}
-          alt={product.title}
-        />
+        <Map />
       </div>
       <div className="p-5 flex items-center gap-3 border-b border-neutral-600">
         <div className="size-10 overflow-hidden rounded-full">
