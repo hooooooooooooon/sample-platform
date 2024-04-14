@@ -43,11 +43,11 @@ const formSchema = z
 
     password: z
       .string()
-      .min(PW_MIN_LENGTH, PW_REGEX_ERROR)
-      .regex(
-        PW_REGEX,
-        "영문 대문자, 소문자, 특수문자를 모두 하나 이상 포함시켜야 합니다."
-      ),
+      .min(
+        PW_MIN_LENGTH,
+        `${PW_MIN_LENGTH}글자 이상의 비밀번호를 입력해주세요.`
+      )
+      .regex(PW_REGEX, PW_REGEX_ERROR),
     confirmPassword: z.string(),
   })
   .superRefine(async ({ email }, ctx) => {
@@ -80,7 +80,7 @@ export async function createAccount(prevState: any, formData: FormData) {
     username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
-    confirmPassword: formData.get("confirmPassword"),
+    confirmPassword: formData.get("passwordConfirm"),
   };
   const result = await formSchema.safeParseAsync(data);
   if (!result.success) {

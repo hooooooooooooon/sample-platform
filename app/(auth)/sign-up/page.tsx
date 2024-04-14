@@ -7,7 +7,7 @@ import { useFormState } from "react-dom";
 import { createAccount } from "./actions";
 import { PW_MIN_LENGTH } from "@/lib/constants";
 
-export default function CreateAccount() {
+export default function SignUp() {
   const [state, dispatch] = useFormState(createAccount, null);
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
@@ -21,13 +21,11 @@ export default function CreateAccount() {
           type="text"
           placeholder="성함"
           required
-          minLength={2}
-          maxLength={20}
           errors={state?.fieldErrors.username}
         />
         <Input
           name="email"
-          type="email"
+          type="text"
           placeholder="이메일"
           required
           errors={state?.fieldErrors.email}
@@ -37,14 +35,12 @@ export default function CreateAccount() {
           type="password"
           placeholder="비밀번호"
           required
-          minLength={PW_MIN_LENGTH}
-          maxLength={20}
           errors={state?.fieldErrors.password}
         />
         <Input
-          name="confirmPassword"
+          name="passwordConfirm"
           type="password"
-          placeholder="비밀번호 재입력"
+          placeholder="비밀번호 확인"
           required
           errors={state?.fieldErrors.confirmPassword}
         />

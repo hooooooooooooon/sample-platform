@@ -9,7 +9,7 @@ const publicOnlyUrls: Routes = {
   "/": true,
   "/login": true,
   "/sms": true,
-  "/create-account": true,
+  "/sign-up": true,
 };
 
 export async function middleware(request: NextRequest) {

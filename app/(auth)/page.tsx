@@ -5,12 +5,12 @@ export default function Home() {
     <div className="flex flex-col items-center justify-between min-h-screen p-6">
       <div className="my-auto flex flex-col items-center gap-2 *:font-medium">
         <span className="text-9xl">🏢</span>
-        <h1 className="text-4xl">Alpha.K.A</h1>
+        <h1 className="text-4xl font-extrabold">Alpha.K.A</h1>
         <h2>건축 플랫폼 알파카에 오신 것을 환영합니다.</h2>
       </div>
       <div className="flex flex-col items-center gap-3 w-full">
         <Link
-          href="/create-account"
+          href="/sign-up"
           className="primary-btn text-lg py-2.5"
         >
           시작하기
