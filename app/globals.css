@@ -4,12 +4,12 @@
 
 @layer base {
   a {
-    @apply text-[#120A8F];
+    @apply text-[#4169E1];
   }
 }
 
 @layer components {
   .primary-btn {
-    @apply w-full rounded-md bg-[#120A8F] text-center font-medium text-neutral-200 transition-colors hover:bg-[#00006A];
+    @apply w-full rounded-md bg-gradient-to-r from-[#4169E1] to-[#002366] text-center font-medium text-neutral-200 transition-colors hover:from-[#002366] hover:to-[#4169E1];
   }
 }

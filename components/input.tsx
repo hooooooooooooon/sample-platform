@@ -21,7 +21,7 @@ export default function Input({
 }: InputProps & InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="relative mb-6">
+      <div className="relative mb-8">
         <input
           required={required}
           name={name}
@@ -30,7 +30,7 @@ export default function Input({
         />
         <label
           htmlFor={name}
-          className="pointer-events-none absolute bottom-2 left-2 z-0 text-base capitalize text-neutral-400 transition-all duration-300 peer-valid/input:bottom-9 peer-valid/input:text-xs peer-valid/input:font-bold peer-focus/input:bottom-9 peer-focus/input:text-xs peer-focus/input:font-bold peer-focus/input:text-[#120A8F]"
+          className="pointer-events-none absolute bottom-2 left-2 z-0 text-base capitalize text-neutral-400 transition-all duration-300 peer-valid/input:bottom-11 peer-valid/input:text-xs peer-valid/input:font-bold peer-focus/input:bottom-11 peer-focus/input:text-xs peer-focus/input:font-bold peer-focus/input:text-[#002366]"
         >
           {placeholder}
         </label>
@@ -53,6 +53,6 @@ export default function Input({
           </span>
         ))}
       </div>
-    </div >
+    </div>
   );
 }

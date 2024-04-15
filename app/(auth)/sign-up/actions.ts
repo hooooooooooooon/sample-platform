@@ -62,7 +62,7 @@ const formSchema = z
     if (user) {
       ctx.addIssue({
         code: "custom",
-        message: "이미 생성된 이메일 계정입니다.",
+        message: "해당 이메일은 이미 사용중입니다.",
         path: ["email"],
         fatal: true,
       });

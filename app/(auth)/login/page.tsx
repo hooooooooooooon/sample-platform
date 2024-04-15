@@ -11,7 +11,7 @@ export default function LogIn() {
 
   const [state, dispatch] = useFormState(logIn, null);
   return (
-    <div className="flex flex-col gap-10 py-8 px-6">
+    <div className="mx-auto flex max-w-screen-sm flex-col gap-10 px-6 py-8">
       <div className="flex flex-col gap-2 *:font-medium">
         <h1 className="text-2xl">안녕하세요!</h1>
         <h2 className="text-xl">이메일을 통해 로그인해주세요.</h2>

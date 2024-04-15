@@ -1,3 +1,4 @@
+import TabBar from "@/components/tab-bar";
 import db from "@/lib/db";
 import { formatToTimeAgo } from "@/lib/utils";
 import {
@@ -32,7 +33,7 @@ export const metadata = {
 export default async function Community() {
   const posts = await getPosts();
   return (
-    <div className="p-5 flex flex-col">
+    <div className="max-w-screen-sm mx-auto p-5 flex flex-col">
       {posts.map((post) => (
         <Link
           key={post.id}
@@ -62,6 +63,7 @@ export default async function Community() {
           </div>
         </Link>
       ))}
+      <TabBar />
     </div>
   );
 }

@@ -21,9 +21,9 @@ export default function ListProduct({
       <div className="relative size-28 rounded-md overflow-hidden">
         <Image fill src={`${photo}/avatar`} className="object-cover" alt={title} quality={10} />
       </div>
-      <div className="flex flex-col gap-1 *:text-neutral-200">
+      <div className="flex flex-col gap-1 *:text-neutral-800">
         <span className="text-lg">{title}</span>
-        <span className="text-sm text-neutral-500">{formatToTimeAgo(created_at.toString())}</span>
+        <span className="text-sm text-neutral-400">{formatToTimeAgo(created_at.toString())}</span>
         <span className="text-lg font-semibold">{formatToWon(price)}원</span>
       </div>
     </Link>

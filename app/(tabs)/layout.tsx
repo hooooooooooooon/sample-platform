@@ -1,5 +1,3 @@
-import TabBar from "@/components/tab-bar";
-
 export default function TabLayout({
   children,
 }: Readonly<{
@@ -8,7 +6,6 @@ export default function TabLayout({
   return (
     <div>
       {children}
-      <TabBar />
     </div>
   );
 }
