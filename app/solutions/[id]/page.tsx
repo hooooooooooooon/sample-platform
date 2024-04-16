@@ -110,7 +110,7 @@ export default async function ProductDetail({
   };
 
   return (
-    <div>
+    <div className="max-w-screen-sm mx-auto mb-32">
       <div className="relative aspect-square">
         <Map />
       </div>

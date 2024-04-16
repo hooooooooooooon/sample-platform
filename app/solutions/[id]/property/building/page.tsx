@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default async function LandOverview({
+export default async function BuildingOverview({
   params,
 }: {
   params: { id: string };
@@ -78,7 +78,7 @@ export default async function LandOverview({
               <h3 className="text-sm font-semibold text-[#4169E1]">
                 Property Overview
               </h3>
-              <h4 className="pt-1 text-3xl font-semibold">토지현황</h4>
+              <h4 className="pt-1 text-3xl font-semibold">건축물현황</h4>
             </div>
             <div className="text-sm font-semibold text-[#4169E1]">
               Alpha.K.A
@@ -87,13 +87,10 @@ export default async function LandOverview({
           <div className="grid grid-cols-[repeat(auto-fill,_minmax(640px,_1fr))] gap-12 pt-10">
             <div>
               <h5 className="text-lg font-semibold text-neutral-800">
-                토지 기본 정보
+                건축물 기본 정보
               </h5>
               <p className="pt-2 text-base font-normal text-neutral-600">
-                학성동 1023-70 일원에 위치한 사옥부지는 총 2개 필지로 구성되어
-                있으며, 대지면적은 약 5,650py 규모입니다. 부지 남측면으로 도로와
-                접하고 있는 부지로 개발사업 진행 시 사업자의 선호에 맞는
-                효율적인 부지 활용이 가능합니다.
+                학성동 1023-70 일원에 위치한 사옥부지는 연면적 1,264py 규모입니다.
               </p>
             </div>
             <div>
@@ -158,7 +155,7 @@ export default async function LandOverview({
                     </tr>
                     <tr>
                       <th className="w-[15%] border-r-[1px] border-neutral-300">
-                        ㎡
+                        sqm
                       </th>
                       <th className="w-[15%]">평</th>
                     </tr>
@@ -202,10 +199,10 @@ export default async function LandOverview({
       </div>
       <ContentTab
         id={id}
-        prevUrl=""
-        postUrl="/properties/building"
-        prevKey="사업개요"
-        postKey="건축물현황"
+        prevUrl="/property/land"
+        postUrl="/population/overview"
+        prevKey="토지현황"
+        postKey="수요분석-1"
       />
     </>
   );

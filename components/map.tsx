@@ -10,6 +10,7 @@ import { OSM } from "ol/source";
 
 export default function OlMap({ }) {
   const [mapObj, setMapObj] = useState<any>();
+  const constantLonLat = [126.3057, 33.3557]
 
   useEffect(() => {
     let mousePositionCtrl = new MousePosition({
@@ -32,11 +33,13 @@ export default function OlMap({ }) {
       target: "ol-map",
       view: new View({
         projection: get("EPSG:3857")!,
-        center: fromLonLat([126.3057, 33.3557], get("EPSG:3857")!),
+        center: fromLonLat(constantLonLat, get("EPSG:3857")!),
         zoom: 14,
+        minZoom: 14,
+        maxZoom: 14,
       }),
     });
-
+    const extent = map.getView().calculateExtent()
     setMapObj({ map });
     return () => {
       map.setTarget(undefined);
