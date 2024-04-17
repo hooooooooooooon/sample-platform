@@ -79,53 +79,18 @@ export default async function BuildingOverview({
               <h3 className="text-sm font-semibold text-[#4169E1]">
                 Market Analysis
               </h3>
-              <h4 className="pt-1 text-3xl font-semibold">수요분석-1</h4>
+              <h4 className="pt-1 text-3xl font-semibold">분양가 산출</h4>
             </div>
             <div className="text-sm font-semibold text-[#4169E1]">
               Alpha.K.A
             </div>
           </div>
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 pt-10">
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                인구 밀도
-              </h5>
-              <p className="pt-2 text-base font-normal text-neutral-600">
-                강원도 내에서 비교적 작은 면적을 보유하고 있는 도시인 원주는
-                강원도 내에서 인구밀도 순위로는 3번째로 높은 편입니다. 또한
-                대부분 인구가 감소하고 있는 강원도 내에서 가장 높은 인구증가율을
-                자랑하고 있습니다.
-              </p>
-            </div>
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                인구 구성
-              </h5>
-              <p className="pt-2 text-base font-normal text-neutral-600">
-                원주시 40~60대의 인구는 2020년 기준 약 16만명 수준으로 전체
-                원주시의 인구 중 약 46%에 해당됩니다.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 gap-12 pt-10">
             <div>
               <div className="flex justify-between">
                 <h5 className="text-lg font-semibold text-neutral-800">
-                  강원도 인구밀도순위 (2019)
+                  분양가
                 </h5>
-                <span className="text-xs">(단위: 명)</span>
-              </div>
-              <div className="pt-2">
-                <div className="h-[28rem] w-full bg-neutral-200"></div>
-              </div>
-            </div>
-            <div>
-              <div className="flex justify-between">
-                <h5 className="text-lg font-semibold text-neutral-800">
-                  원주시 인구 구성 현황 (2020)
-                </h5>
-                <span className="text-xs">(단위: 명)</span>
-              </div>
-              <div className="pt-2">
-                <div className="h-[28rem] w-full bg-neutral-200"></div>
               </div>
             </div>
           </div>
@@ -133,10 +98,10 @@ export default async function BuildingOverview({
       </div>
       <ContentTab
         id={id}
-        prevUrl="/property/building"
-        postUrl="/population/trend"
-        prevKey="건축물현황"
-        postKey="수요분석-2"
+        prevUrl="/market/sale"
+        postUrl=""
+        prevKey="실거래가 분석"
+        postKey="사업개요"
       />
     </>
   );

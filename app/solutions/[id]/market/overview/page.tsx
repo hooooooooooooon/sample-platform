@@ -77,9 +77,9 @@ export default async function BuildingOverview({
           <div className="flex justify-between">
             <div>
               <h3 className="text-sm font-semibold text-[#4169E1]">
-                Property Overview
+                Market Analysis
               </h3>
-              <h4 className="pt-1 text-3xl font-semibold">건축물현황</h4>
+              <h4 className="pt-1 text-3xl font-semibold">시장분석-1</h4>
             </div>
             <div className="text-sm font-semibold text-[#4169E1]">
               Alpha.K.A
@@ -88,43 +88,42 @@ export default async function BuildingOverview({
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 pt-10">
             <div>
               <h5 className="text-lg font-semibold text-neutral-800">
-                건축물 기본 정보
+                구축 위주의 원주 구도심 APT 공급 시장
               </h5>
               <p className="pt-2 text-base font-normal text-neutral-600">
-                학성동 1023-70 일원에 위치한 사옥부지는 연면적 1,264py 규모입니다.
+                본 사업부지가 입지하고 있는 원주 학성동을 포함한 중앙동, 일산동,
+                원인동 구도심 내에는 인근 신도시 대비 현저하게 부족한
+                수준입니다. 노후화된 빌라 및 나홀로 아파트, 소규모 단지형
+                아파트가 혼재되어 있는 주거 시장입니다.
               </p>
             </div>
             <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                토지 이용계획 확인원
-              </h5>
+              <div className="flex justify-between">
+                <h5 className="text-lg font-semibold text-neutral-800">
+                  APT 공급 추이 (2013~2019)
+                </h5>
+                <span className="text-xs">(단위: 세대)</span>
+              </div>
               <div className="pt-2">
-                <table className="h-32 w-full table-auto border-y-2 border-neutral-400">
-                  <thead className="border-b-[1px] border-neutral-300 bg-neutral-100">
-                    <tr>
-                      <th className="w-1/2 border-r-[1px] border-neutral-300 px-8">
-                        국토의 이용 및 계획에 관한 법률에 따른 지역·지구 등
-                      </th>
-                      <th>다른 법령 등에 따른 지역·지구 등</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-neutral-600 *:text-sm">
-                    <tr>
-                      <td className="border-r-[1px] border-neutral-300 text-center font-normal">
-                        제2종 일반주거지역
-                      </td>
-                      <td className="text-center font-normal">
-                        가축사육제한구역, 상대보호구역, 절대보호구역
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div className="h-72 w-full bg-neutral-200"></div>
               </div>
             </div>
             <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                토지조서
-              </h5>
+              <div className="flex justify-between">
+                <h5 className="text-lg font-semibold text-neutral-800">
+                  공급 분포
+                </h5>
+              </div>
+              <div className="pt-2">
+                <div className="h-96 w-full bg-neutral-200"></div>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <h5 className="text-lg font-semibold text-neutral-800">
+                  원주시 학성동 일대 아파트 공급 현황 (2020~)
+                </h5>
+              </div>
               <div className="pt-2">
                 <table className="h-[28rem] w-full table-auto border-y-2 border-neutral-400">
                   <thead className="border-b-[1px] border-neutral-300 bg-neutral-100">
@@ -185,25 +184,15 @@ export default async function BuildingOverview({
                 </table>
               </div>
             </div>
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                지적편집도
-              </h5>
-              <div className="pt-2">
-                <div className="relative h-[28rem] w-full bg-neutral-200">
-                  <Map />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
       <ContentTab
         id={id}
-        prevUrl="/property/land"
-        postUrl="/population/overview"
-        prevKey="토지현황"
-        postKey="수요분석-1"
+        prevUrl="/population/trend"
+        postUrl="/market/trend"
+        prevKey="수요분석-2"
+        postKey="시장분석-2"
       />
     </>
   );

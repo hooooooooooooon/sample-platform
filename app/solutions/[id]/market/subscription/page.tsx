@@ -77,54 +77,22 @@ export default async function BuildingOverview({
           <div className="flex justify-between">
             <div>
               <h3 className="text-sm font-semibold text-[#4169E1]">
-                Property Overview
+                Market Analysis
               </h3>
-              <h4 className="pt-1 text-3xl font-semibold">건축물현황</h4>
+              <h4 className="pt-1 text-3xl font-semibold">분양가 분석</h4>
             </div>
             <div className="text-sm font-semibold text-[#4169E1]">
               Alpha.K.A
             </div>
           </div>
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 pt-10">
+          <div className="grid grid-cols-1 gap-12 pt-10">
             <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                건축물 기본 정보
-              </h5>
-              <p className="pt-2 text-base font-normal text-neutral-600">
-                학성동 1023-70 일원에 위치한 사옥부지는 연면적 1,264py 규모입니다.
-              </p>
-            </div>
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                토지 이용계획 확인원
-              </h5>
-              <div className="pt-2">
-                <table className="h-32 w-full table-auto border-y-2 border-neutral-400">
-                  <thead className="border-b-[1px] border-neutral-300 bg-neutral-100">
-                    <tr>
-                      <th className="w-1/2 border-r-[1px] border-neutral-300 px-8">
-                        국토의 이용 및 계획에 관한 법률에 따른 지역·지구 등
-                      </th>
-                      <th>다른 법령 등에 따른 지역·지구 등</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-neutral-600 *:text-sm">
-                    <tr>
-                      <td className="border-r-[1px] border-neutral-300 text-center font-normal">
-                        제2종 일반주거지역
-                      </td>
-                      <td className="text-center font-normal">
-                        가축사육제한구역, 상대보호구역, 절대보호구역
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="flex justify-between">
+                <h5 className="text-lg font-semibold text-neutral-800">
+                  APT 공급 추이 (2013~2019)
+                </h5>
+                <span className="text-xs">(단위: 만원)</span>
               </div>
-            </div>
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                토지조서
-              </h5>
               <div className="pt-2">
                 <table className="h-[28rem] w-full table-auto border-y-2 border-neutral-400">
                   <thead className="border-b-[1px] border-neutral-300 bg-neutral-100">
@@ -185,25 +153,15 @@ export default async function BuildingOverview({
                 </table>
               </div>
             </div>
-            <div>
-              <h5 className="text-lg font-semibold text-neutral-800">
-                지적편집도
-              </h5>
-              <div className="pt-2">
-                <div className="relative h-[28rem] w-full bg-neutral-200">
-                  <Map />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
       <ContentTab
         id={id}
-        prevUrl="/property/land"
-        postUrl="/population/overview"
-        prevKey="토지현황"
-        postKey="수요분석-1"
+        prevUrl="/market/trend"
+        postUrl="/market/sale"
+        prevKey="시장분석-2"
+        postKey="실거래가 분석"
       />
     </>
   );

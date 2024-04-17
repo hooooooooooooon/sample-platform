@@ -1,11 +1,9 @@
+import ContentTab from "@/components/content-tab";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { formatToWon } from "@/lib/utils";
 import { UserIcon } from "@heroicons/react/24/solid";
-import {
-  revalidateTag,
-  unstable_cache as nextCache,
-} from "next/cache";
+import { revalidateTag, unstable_cache as nextCache } from "next/cache";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
@@ -79,6 +77,7 @@ export default async function ProductDetail({
 }: {
   params: { id: string };
 }) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const id = Number(params.id);
   if (isNaN(id)) {
     return notFound();
@@ -110,32 +109,33 @@ export default async function ProductDetail({
   };
 
   return (
-    <div className="max-w-screen-sm mx-auto mb-32">
-      <div className="relative aspect-square">
-        <Map />
-      </div>
-      <div className="p-5 flex items-center gap-3 border-b border-neutral-600">
-        <div className="size-10 overflow-hidden rounded-full">
-          {product.user.avatar !== null ? (
-            <Image
-              src={product.user.avatar}
-              width={40}
-              height={40}
-              alt={product.user.username}
-            />
-          ) : (
-            <UserIcon className="size-10" />
-          )}
+    <>
+      <div className="max-w-screen-sm mx-auto mb-32">
+        <div className="relative aspect-square">
+          <Map />
         </div>
-        <div>
-          <h3>{product.user.username}</h3>
+        <div className="p-5 flex items-center gap-3 border-b border-neutral-600">
+          <div className="size-10 overflow-hidden rounded-full">
+            {product.user.avatar !== null ? (
+              <Image
+                src={product.user.avatar}
+                width={40}
+                height={40}
+                alt={product.user.username}
+              />
+            ) : (
+              <UserIcon className="size-10" />
+            )}
+          </div>
+          <div>
+            <h3>{product.user.username}</h3>
+          </div>
         </div>
-      </div>
-      <div className="p-5">
-        <h1 className="text-2xl font-semibold">{product.title}</h1>
-        <p>{product.description}</p>
-      </div>
-      <div className="fixed w-full bottom-0 left-0 p-5 pb-10 bg-neutral-800 flex justify-between items-center">
+        <div className="p-5">
+          <h1 className="text-2xl font-semibold">{product.title}</h1>
+          <p>{product.description}</p>
+        </div>
+        {/* <div className="fixed w-full bottom-0 left-0 p-5 pb-10 bg-neutral-800 flex justify-between items-center">
         <span className="font-semibold text-lg">
           {formatToWon(product.price)}원
         </span>
@@ -150,8 +150,16 @@ export default async function ProductDetail({
             </button>
           </form>
         )}
+      </div> */}
       </div>
-    </div>
+      <ContentTab
+        id={id}
+        prevUrl="/market/result"
+        postUrl="/property/land"
+        prevKey="분양가 산출"
+        postKey="토지현황"
+      />
+    </>
   );
 }
 

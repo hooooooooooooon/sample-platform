@@ -6,6 +6,9 @@
   a {
     @apply text-[#4169E1];
   }
+  html {
+    @apply overflow-y-auto scrollbar-hide;
+  }
 }
 
 @layer components {

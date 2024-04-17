@@ -21,6 +21,7 @@ const checkEmailExists = async (email: string) => {
     return false;
   }
 };
+
 const formSchema = z.object({
   email: z
     .string({ required_error: "이메일을 입력해주세요." })
@@ -31,7 +32,7 @@ const formSchema = z.object({
   // .min(PW_MIN_LENGTH)
   // .regex(PW_REGEX, PW_REGEX_ERROR),
 });
-export async function logIn(prevState: any, formData: FormData) {
+export async function singIn(prevState: any, formData: FormData) {
   const data = {
     email: formData.get("email"),
     password: formData.get("password"),

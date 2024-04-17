@@ -4,12 +4,12 @@ import Input from "@/components/input";
 import Button from "@/components/button";
 import SocialLogin from "@/components/social-login";
 import { useFormState } from "react-dom";
-import { logIn } from "./actions";
+import { singIn } from "./actions";
 import { PW_MIN_LENGTH } from "@/lib/constants";
 
-export default function LogIn() {
+export default function SignIn() {
 
-  const [state, dispatch] = useFormState(logIn, null);
+  const [state, dispatch] = useFormState(singIn, null);
   return (
     <div className="mx-auto flex max-w-screen-sm flex-col gap-10 px-6 py-8">
       <div className="flex flex-col gap-2 *:font-medium">

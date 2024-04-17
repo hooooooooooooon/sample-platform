@@ -17,10 +17,10 @@ export default function ContentTab(param: {
 }) {
   const pathname = usePathname();
   return (
-    <div className="fixed bottom-0 mx-auto flex w-full h-20 border-t bg-neutral-600 px-5 py-3 *:text-neutral-200 justify-between">
+    <div className="fixed bottom-0 mx-auto flex w-full h-16 border-t bg-neutral-700 px-5 py-3 *:text-neutral-200 justify-between">
       <Link
         href={`/solutions/${param.id}${param.prevUrl}`}
-        className="flex items-center gap-px"
+        className="flex items-center justify-start gap-px w-36"
       >
         <ChevronLeftIcon className="w-7 h-7" />
         <span>{param.prevKey}</span>
@@ -33,7 +33,7 @@ export default function ContentTab(param: {
       </Link>
       <Link
         href={`/solutions/${param.id}${param.postUrl}`}
-        className="flex items-center gap-px"
+        className="flex items-center justify-end gap-px w-36"
       >
         <span>{param.postKey}</span>
         <ChevronRightIcon className="w-7 h-7" />

@@ -60,6 +60,7 @@ export default async function LandOverview({
 }: {
   params: { id: string };
 }) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const id = Number(params.id);
   if (isNaN(id)) {
     return notFound();
@@ -84,7 +85,7 @@ export default async function LandOverview({
               Alpha.K.A
             </div>
           </div>
-          <div className="grid grid-cols-[repeat(auto-fill,_minmax(640px,_1fr))] gap-12 pt-10">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 pt-10">
             <div>
               <h5 className="text-lg font-semibold text-neutral-800">
                 토지 기본 정보

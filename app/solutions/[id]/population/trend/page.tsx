@@ -79,7 +79,7 @@ export default async function BuildingOverview({
               <h3 className="text-sm font-semibold text-[#4169E1]">
                 Market Analysis
               </h3>
-              <h4 className="pt-1 text-3xl font-semibold">수요분석-1</h4>
+              <h4 className="pt-1 text-3xl font-semibold">수요분석-2</h4>
             </div>
             <div className="text-sm font-semibold text-[#4169E1]">
               Alpha.K.A
@@ -88,28 +88,25 @@ export default async function BuildingOverview({
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 pt-10">
             <div>
               <h5 className="text-lg font-semibold text-neutral-800">
-                인구 밀도
+                인구 현황
               </h5>
               <p className="pt-2 text-base font-normal text-neutral-600">
-                강원도 내에서 비교적 작은 면적을 보유하고 있는 도시인 원주는
-                강원도 내에서 인구밀도 순위로는 3번째로 높은 편입니다. 또한
-                대부분 인구가 감소하고 있는 강원도 내에서 가장 높은 인구증가율을
-                자랑하고 있습니다.
+                원주시의 인구 수는 2022년 7월 기준으로 약 36만명이며, 매년
+                지속적으로 증가하는 추세를 보입니다.
               </p>
             </div>
             <div>
               <h5 className="text-lg font-semibold text-neutral-800">
-                인구 구성
+                인구 이동 추세
               </h5>
               <p className="pt-2 text-base font-normal text-neutral-600">
-                원주시 40~60대의 인구는 2020년 기준 약 16만명 수준으로 전체
-                원주시의 인구 중 약 46%에 해당됩니다.
+                원주시는 지속적으로 매 분기 인구가 유입되고 있습니다.
               </p>
             </div>
             <div>
               <div className="flex justify-between">
                 <h5 className="text-lg font-semibold text-neutral-800">
-                  강원도 인구밀도순위 (2019)
+                  인구변동추이 (2016~2020)
                 </h5>
                 <span className="text-xs">(단위: 명)</span>
               </div>
@@ -120,7 +117,7 @@ export default async function BuildingOverview({
             <div>
               <div className="flex justify-between">
                 <h5 className="text-lg font-semibold text-neutral-800">
-                  원주시 인구 구성 현황 (2020)
+                  원주시 분기별 순이동 추이 (전입~전출)
                 </h5>
                 <span className="text-xs">(단위: 명)</span>
               </div>
@@ -133,10 +130,10 @@ export default async function BuildingOverview({
       </div>
       <ContentTab
         id={id}
-        prevUrl="/property/building"
-        postUrl="/population/trend"
-        prevKey="건축물현황"
-        postKey="수요분석-2"
+        prevUrl="/population/overview"
+        postUrl="/market/overview"
+        prevKey="수요분석-1"
+        postKey="시장분석-1"
       />
     </>
   );
