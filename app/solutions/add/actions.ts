@@ -1,34 +1,18 @@
 "use server";
 
-import z from "zod";
-import fs from "fs/promises";
 import db from "@/lib/db";
 import getSession from "@/lib/session";
 import { redirect } from "next/navigation";
+import { solutionSchema } from "./schema";
 
-const productSchema = z.object({
-  photo: z.string({
-    required_error: "사진을 추가하십시오.",
-  }),
-  title: z.string({
-    required_error: "제목을 작성하십시오.",
-  }),
-  description: z.string({
-    required_error: "내용을 작성하십시오.",
-  }),
-  price: z.coerce.number({
-    required_error: "가격을 기입하십시오.",
-  }),
-});
-
-export async function uploadProduct(_: any, formData: FormData) {
+export async function uploadSolution(formData: FormData) {
   const data = {
     photo: formData.get("photo"),
     title: formData.get("title"),
     price: formData.get("price"),
     description: formData.get("description"),
   };
-  const result = productSchema.safeParse(data);
+  const result = solutionSchema.safeParse(data);
   if (!result.success) {
     return result.error.flatten();
   } else {
@@ -50,7 +34,7 @@ export async function uploadProduct(_: any, formData: FormData) {
           id: true,
         },
       });
-      redirect(`/products/${product.id}`);
+      redirect(`/solutions/${product.id}`);
     }
   }
 }

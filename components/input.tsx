@@ -3,7 +3,7 @@ import {
   PencilIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import { InputHTMLAttributes } from "react";
+import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react";
 
 interface InputProps {
   name: string;
@@ -12,17 +12,21 @@ interface InputProps {
   errors?: string[];
 }
 
-export default function Input({
-  name,
-  placeholder,
-  required,
-  errors = [],
-  ...rest
-}: InputProps & InputHTMLAttributes<HTMLInputElement>) {
+const _Input = (
+  {
+    name,
+    placeholder,
+    required,
+    errors = [],
+    ...rest
+  }: InputProps & InputHTMLAttributes<HTMLInputElement>,
+  ref: ForwardedRef<HTMLInputElement>
+) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="relative mb-8">
         <input
+          ref={ref}
           required={required}
           name={name}
           className="peer/input relative w-full border-0 border-b-[1px] border-b-neutral-400 bg-none pb-2 text-base text-neutral-800 placeholder:text-transparent focus:outline-none"
@@ -55,4 +59,6 @@ export default function Input({
       </div>
     </div>
   );
-}
+};
+
+export default forwardRef(_Input);

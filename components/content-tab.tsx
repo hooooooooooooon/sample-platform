@@ -29,7 +29,7 @@ export default function ContentTab(param: {
         href="/home"
         className="w-24 flex flex-col items-center justify-center gap-px"
       >
-        <HomeIcon className="w-7 h-7" />
+        <HomeIcon className="size-5" />
       </Link>
       <Link
         href={`/solutions/${param.id}${param.postUrl}`}
