@@ -56,8 +56,8 @@ export default function TabBar() {
           )}
           <span className={fontSize}>강연</span>
         </Link>
-        <Link href="/profile" className="flex flex-col items-center gap-px">
-          {pathname === "/profile" ? (
+        <Link href="/information" className="flex flex-col items-center gap-px">
+          {pathname === "/information" ? (
             <SolidUserIcon className={iconSize} />
           ) : (
             <OutlineUserIcon className={iconSize} />
