@@ -17,6 +17,7 @@
   ],
   "theme_color": "#4169E1",
   "background_color": "#4169E1",
+  "application_scope": "/",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait"

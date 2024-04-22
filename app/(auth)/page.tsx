@@ -29,7 +29,7 @@ export default function Home() {
               <div className="mb-2">
                 <Link href="/sign-up" className="text-black">
                   <div className="mb-4 flex h-10 w-full content-center items-center justify-center rounded-full bg-neutral-900 font-semibold hover:bg-neutral-800">
-                    <span className="text-base text-neutral-200">계정 만들기</span>
+                    <span className="text-base text-white">계정 만들기</span>
                   </div>
                 </Link>
               </div>
