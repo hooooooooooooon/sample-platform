@@ -1,0 +1,23 @@
+{
+  "name": "Alpha-ka App",
+  "short_name": "Alphaka",
+  "description": "알파카 - 건축을 위한 모든 것",
+  "icons": [
+    {
+      "src": "/icons/192-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#4169E1",
+  "background_color": "#4169E1",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
