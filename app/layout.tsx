@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: "%s | Alpha.K.A",
   },
   description: "알파카 - 건축을 위한 모든 것",
+  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
