@@ -47,7 +47,7 @@ export default function Home() {
               </div>
               <div className="mb-2">
                 <Link href="/sign-in" className="*:text-neutral-800">
-                  <div className="h-10 w-full content-center items-center justify-center rounded-full border-[1px] border-neutral-400 font-semibold hover:bg-neutral-200">
+                  <div className="flex h-10 w-full content-center items-center justify-center rounded-full border-[1px] border-neutral-400 font-semibold hover:bg-neutral-200">
                     <span className="text-base">로그인</span>
                   </div>
                 </Link>
