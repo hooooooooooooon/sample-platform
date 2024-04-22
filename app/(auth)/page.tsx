@@ -28,7 +28,7 @@ export default function Home() {
               <SocialLogin />
               <div className="mb-2">
                 <Link href="/sign-up" className="text-black">
-                  <div className="mb-4 hover:bg-neutral-800 w-full h-10 rounded-full bg-neutral-900 font-semibold text-center text-neutral-200 content-center">
+                  <div className="mb-4 hover:bg-neutral-800 w-full h-10 rounded-full bg-neutral-900 font-semibold items-center text-center text-neutral-200 content-center">
                     계정 만들기
                   </div>
                 </Link>
@@ -47,7 +47,7 @@ export default function Home() {
               </div>
               <div className="mb-2">
                 <Link href="/sign-in" className="*:text-neutral-800">
-                  <div className="hover:bg-neutral-200 w-full h-10 border-neutral-400 border-[1px] rounded-full font-semibold text-center content-center">
+                  <div className="hover:bg-neutral-200 w-full h-10 border-neutral-400 border-[1px] rounded-full font-semibold items-center text-center content-center">
                     로그인
                   </div>
                 </Link>
