@@ -27,27 +27,27 @@ async function getAddress({ query }: { query: string }) {
   }
 }
 
-export default async function Intro() {
-  const query = "성북구 삼선동2가 88";
-  const [addressResults] = await Promise.all([getAddress({ query })]);
-  console.log(addressResults);
-  return (
-    <div className="flex flex-col items-center justify-between min-h-screen p-6 max-w-screen-sm mx-auto">
-      <div className="w-full my-auto flex flex-col items-center gap-2 *:font-medium">
-        <form className="w-full">
-          <Input
-            name="address"
-            type="text"
-            placeholder="지번 주소를 입력하세요."
-            required
-          />
-        </form>
-      </div>
-      <div className="flex flex-col items-center gap-3 w-full">
-        <Link href="/sign-up" className="primary-btn text-lg py-2.5">
-          회원가입하고 시작하기
-        </Link>
-      </div>
-    </div>
-  );
-}
+export default async function Intro() { }
+//   const query = "성북구 삼선동2가 88";
+//   const [addressResults] = await Promise.all([getAddress({ query })]);
+//   console.log(addressResults);
+//   return (
+//     <div className="flex flex-col items-center justify-between min-h-screen p-6 max-w-screen-sm mx-auto">
+//       <div className="w-full my-auto flex flex-col items-center gap-2 *:font-medium">
+//         <form className="w-full">
+//           <Input
+//             name="address"
+//             type="text"
+//             placeholder="지번 주소를 입력하세요."
+//             required
+//           />
+//         </form>
+//       </div>
+//       <div className="flex flex-col items-center gap-3 w-full">
+//         <Link href="/sign-up" className="primary-btn text-lg py-2.5">
+//           회원가입하고 시작하기
+//         </Link>
+//       </div>
+//     </div>
+//   );
+// }
