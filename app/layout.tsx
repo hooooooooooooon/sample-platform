@@ -4,12 +4,21 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const APP_DEFAULT_TITLE = "Alpha-KA App"
+
 export const metadata: Metadata = {
+  applicationName: "Alphaka",
   title: {
+    default: APP_DEFAULT_TITLE,
     template: "%s | Alpha.K.A",
-    default: "Alpha.K.A",
   },
   description: "알파카 - 건축을 위한 모든 것",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: APP_DEFAULT_TITLE
+  },
   icons: {
     other: [
       {
@@ -23,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4169E1",
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
