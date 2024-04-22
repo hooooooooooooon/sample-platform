@@ -40,6 +40,14 @@ export default function TabBar() {
           )}
           <span className={fontSize}>커뮤니티</span>
         </Link>
+        <Link href="/live" className="flex flex-col items-center gap-px">
+          {pathname === "/live" ? (
+            <SolidVideoCameraIcon className={iconSize} />
+          ) : (
+            <OutlineVideoCameraIcon className={iconSize} />
+          )}
+          <span className={fontSize}>컨설팅</span>
+        </Link>
         <Link href="/chats" className="flex flex-col items-center gap-px">
           {pathname === "/chats" ? (
             <SolidChatIcon className={iconSize} />
@@ -47,14 +55,6 @@ export default function TabBar() {
             <OutlineChatIcon className={iconSize} />
           )}
           <span className={fontSize}>채팅</span>
-        </Link>
-        <Link href="/live" className="flex flex-col items-center gap-px">
-          {pathname === "/live" ? (
-            <SolidVideoCameraIcon className={iconSize} />
-          ) : (
-            <OutlineVideoCameraIcon className={iconSize} />
-          )}
-          <span className={fontSize}>강연</span>
         </Link>
         <Link href="/information" className="flex flex-col items-center gap-px">
           {pathname === "/information" ? (
