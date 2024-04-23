@@ -25,7 +25,7 @@ export default function Home() {
               <span className="text-2xl font-semibold">지금 가입하세요.</span>
             </div>
             <div className="md:w-96 w-full">
-              <SocialLogin />
+              <SocialLogin signedUp={false} />
               <div className="mb-2">
                 <Link href="/sign-up" className="text-black">
                   <div className="mb-4 flex h-10 w-full content-center items-center justify-center rounded-full bg-neutral-900 font-semibold hover:bg-neutral-800">

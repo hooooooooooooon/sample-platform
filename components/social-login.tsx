@@ -1,8 +1,8 @@
-import { ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline";
 import { ChatBubbleOvalLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
-export default function SocialLogin() {
+export default function SocialLogin({ signedUp }: { signedUp: boolean }) {
+  const comment = signedUp === true ? " 계정으로 로그인" : " 계정으로 가입하기"
   return (
     <>
       <div className="mb-4">
@@ -12,7 +12,9 @@ export default function SocialLogin() {
               <ChatBubbleOvalLeftIcon className="size-5 text-neutral-800" />
             </span>
             <span className="text-base font-bold text-neutral-800">KAKAO</span>
-            <span className="text-base text-neutral-800"> 계정으로 로그인</span>
+            <span className="text-base text-neutral-800">
+              {comment}
+            </span>
           </div>
         </Link>
       </div>
@@ -21,7 +23,7 @@ export default function SocialLogin() {
           <div className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#03c75a] to-[#17b75e] text-center text-base font-semibold text-white transition-colors duration-500 hover:from-[#17b75e] hover:to-[#03c75a]">
             <span className="text-xl font-[1000]">N</span>
             <span className="text-base font-bold">NAVER</span>
-            <span className="text-base"> 계정으로 로그인</span>
+            <span className="text-base">{comment}</span>
           </div>
         </Link>
       </div>

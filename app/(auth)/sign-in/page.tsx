@@ -27,7 +27,7 @@ export default function SignIn() {
         </div>
         <div className="px-8 pb-12">
           <div className="py-5 text-2xl font-semibold">알파카 로그인하기</div>
-          <SocialLogin />
+          <SocialLogin signedUp={true} />
           <form action={dispatch} className="flex flex-col gap-3 py-5">
             <Input
               name="email"
